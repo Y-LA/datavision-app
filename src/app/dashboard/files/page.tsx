@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FileText, Download, Trash2, ExternalLink, Search } from "lucide-react";
+import { FileText, Download, Trash2, ExternalLink, Search, FileSpreadsheet } from "lucide-react";
 import Link from "next/link";
 
 export default function MyFilesPage() {

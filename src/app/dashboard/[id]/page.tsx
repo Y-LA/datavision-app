@@ -72,7 +72,7 @@ function ChartRenderer({ chart, isPrinting }: { chart: ChartConfig; isPrinting: 
             {chart.data.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
           </Pie>
           <Tooltip
-            formatter={(v: unknown) => [typeof v === "number" ? v.toLocaleString() : v, yKey]}
+            formatter={(v: unknown) => [typeof v === "number" ? (v as number).toLocaleString() : String(v ?? ""), yKey] as [string, string]}
             contentStyle={{ borderRadius: 12, border: "1px solid #e2e8f0", fontSize: 13 }}
           />
           <Legend />
@@ -96,7 +96,7 @@ function ChartRenderer({ chart, isPrinting }: { chart: ChartConfig; isPrinting: 
           <XAxis dataKey={chart.xKey} stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} />
           <YAxis stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={fmtTick} />
           <Tooltip
-            formatter={(v: unknown) => [typeof v === "number" ? v.toLocaleString() : v, yKey]}
+            formatter={(v: unknown) => [typeof v === "number" ? (v as number).toLocaleString() : String(v ?? ""), yKey] as [string, string]}
             contentStyle={{ borderRadius: 12, border: "1px solid #e2e8f0", fontSize: 13 }}
           />
           <Area type="monotone" dataKey={yKey} stroke="#3b82f6" strokeWidth={2.5} fill="url(#ag0)" />
@@ -114,7 +114,7 @@ function ChartRenderer({ chart, isPrinting }: { chart: ChartConfig; isPrinting: 
           <XAxis dataKey={chart.xKey} stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} />
           <YAxis stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={fmtTick} />
           <Tooltip
-            formatter={(v: unknown, name: unknown) => [typeof v === "number" ? v.toLocaleString() : v, name]}
+            formatter={(v: unknown, name: unknown) => [(typeof v === "number" ? v.toLocaleString() : String(v ?? "")), String(name ?? "")] as [string, string]}
             contentStyle={{ borderRadius: 12, border: "1px solid #e2e8f0", fontSize: 13 }}
           />
           {isMulti && <Legend />}
